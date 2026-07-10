@@ -1,0 +1,92 @@
+import type { Metadata } from "next";
+
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { HeroBanner } from "@/components/HeroBanner";
+import { Intro } from "@/components/Intro";
+import { PhotoGridSection } from "@/components/PhotoGridSection";
+import { WebProjectsSection } from "@/components/WebProjectsSection";
+import { client } from "@/sanity/client";
+import {
+  siteSettingsQuery,
+  sportsPhotosQuery,
+  webProjectsQuery,
+} from "@/sanity/queries";
+import type { SiteSettings, SportsPhoto, WebProject } from "@/sanity/types";
+
+export const revalidate = 60;
+
+async function getData() {
+  if (!client) return { settings: null, webProjects: [], sportsPhotos: [] };
+
+  const [settings, webProjects, sportsPhotos] = await Promise.all([
+    client.fetch<SiteSettings>(siteSettingsQuery),
+    client.fetch<WebProject[]>(webProjectsQuery),
+    client.fetch<SportsPhoto[]>(sportsPhotosQuery),
+  ]);
+
+  return { settings, webProjects, sportsPhotos };
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  if (!client) return {};
+
+  const settings = await client.fetch<SiteSettings>(siteSettingsQuery);
+
+  if (!settings) return {};
+
+  return {
+    title: settings.seoTitle || settings.heading,
+    description: settings.seoDescription || settings.introText || undefined,
+  };
+}
+
+export default async function Home() {
+  const { settings, webProjects, sportsPhotos } = await getData();
+
+  if (!settings) {
+    return (
+      <main className="mx-auto flex max-w-2xl flex-1 flex-col items-center justify-center px-6 py-24 text-center">
+        <h1 className="font-serif text-2xl italic text-foreground">
+          Contenu non configuré
+        </h1>
+        <p className="mt-4 text-sm text-muted">
+          {client
+            ? "Ajoutez les « Réglages du site » dans le studio Sanity (/studio) pour afficher la page."
+            : "Configurez NEXT_PUBLIC_SANITY_PROJECT_ID dans .env.local puis ajoutez du contenu dans le studio Sanity (/studio)."}
+        </p>
+      </main>
+    );
+  }
+
+  return (
+    <>
+      <HeroBanner image={settings.heroImage} />
+      <Header logoText={settings.logoText} />
+      <main className="flex-1">
+        <Intro
+          kicker={settings.kicker}
+          heading={settings.heading}
+          introText={settings.introText}
+        />
+        <WebProjectsSection
+          label={settings.sitesLabel}
+          note={settings.sitesNote}
+          projects={webProjects}
+        />
+        <PhotoGridSection
+          label={settings.photosLabel}
+          instagramHandle={settings.instagramHandle}
+          instagramUrl={settings.instagramUrl}
+          photos={sportsPhotos}
+        />
+      </main>
+      <Footer
+        footerCta={settings.footerCta}
+        contactEmail={settings.contactEmail}
+        instagramUrl={settings.instagramUrl}
+        linkedinUrl={settings.linkedinUrl}
+      />
+    </>
+  );
+}
