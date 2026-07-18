@@ -8,6 +8,7 @@ import { PhotoGridSection } from "@/components/PhotoGridSection";
 import { WebProjectsSection } from "@/components/WebProjectsSection";
 import { WorkingStyleSection } from "@/components/WorkingStyleSection";
 import { client } from "@/sanity/client";
+import { urlForImage } from "@/sanity/image";
 import {
   siteSettingsQuery,
   sportsPhotosQuery,
@@ -36,9 +37,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
   if (!settings) return {};
 
+  const icon = settings.logoImage?.asset?._ref
+    ? urlForImage(settings.logoImage).width(64).height(64).fit("max").url()
+    : undefined;
+
   return {
     title: settings.seoTitle || settings.heading,
     description: settings.seoDescription || settings.introText || undefined,
+    icons: icon ? { icon } : undefined,
   };
 }
 
