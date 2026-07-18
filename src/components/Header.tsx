@@ -106,7 +106,6 @@ export function Header({
             </ul>
           </nav>
           <div className="flex items-center gap-2">
-            <ThemeToggle />
             {contactEmail ? (
               <a
                 href="#contact"
@@ -115,6 +114,7 @@ export function Header({
                 Me contacter
               </a>
             ) : null}
+            <ThemeToggle />
           </div>
         </div>
       </div>

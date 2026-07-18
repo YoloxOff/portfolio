@@ -29,21 +29,33 @@ export function Intro({
           hasPortrait ? "lg:grid-cols-[1.1fr_0.9fr]" : ""
         }`}
       >
-        <div>
+        <div
+          className={
+            hasPortrait ? "" : "mx-auto flex max-w-2xl flex-col items-center text-center"
+          }
+        >
           {kicker ? (
             <p className="inline-flex rounded-full border border-border px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-accent">
               {kicker}
             </p>
           ) : null}
-          <h1 className="mt-6 max-w-xl font-serif text-3xl leading-tight text-foreground sm:text-4xl md:text-5xl">
+          <h1
+            className={`mt-6 font-serif text-3xl leading-tight text-foreground sm:text-4xl md:text-5xl ${
+              hasPortrait ? "max-w-xl" : ""
+            }`}
+          >
             {heading}
           </h1>
           {introText ? (
-            <p className="mt-6 max-w-md text-[15px] leading-relaxed text-muted">
+            <p
+              className={`mt-6 text-[15px] leading-relaxed text-muted ${
+                hasPortrait ? "max-w-md" : "max-w-xl"
+              }`}
+            >
               {introText}
             </p>
           ) : null}
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
               href={`mailto:${contactEmail}`}
               className="rounded-full bg-accent px-6 py-3 text-[11px] font-semibold uppercase tracking-widest text-white transition-opacity hover:opacity-90"
