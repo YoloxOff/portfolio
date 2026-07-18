@@ -71,7 +71,7 @@ export function Header({
   );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/60 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25),0_8px_30px_-12px_rgba(0,0,0,0.25)] backdrop-blur-xl backdrop-saturate-150">
       <div
         className={`mx-auto flex max-w-5xl px-6 py-6 ${
           position === "center"
