@@ -9,7 +9,7 @@ export default defineType({
       name: "logoText",
       title: "Logo (texte)",
       description:
-        "Utilisé si aucune image de logo n'est renseignée, et comme texte alternatif sinon.",
+        "Toujours affiché, à droite de l'image de logo si vous en ajoutez une.",
       type: "string",
       initialValue: "Ali",
       validation: (rule) => rule.required(),
@@ -17,7 +17,8 @@ export default defineType({
     defineField({
       name: "logoImage",
       title: "Logo (image)",
-      description: "Optionnel — laissez vide pour afficher le logo texte.",
+      description:
+        "Optionnel — s'affiche à gauche du logo texte. Laissez vide pour n'afficher que le texte.",
       type: "image",
       options: { hotspot: true },
       fields: [

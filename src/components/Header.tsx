@@ -44,20 +44,23 @@ export function Header({
   const dimensions = logoImage?.dimensions;
   const aspectRatio = dimensions ? dimensions.width / dimensions.height : 3;
 
-  const logo = logoImage?.asset?._ref ? (
-    <Image
-      src={urlForImage(logoImage).height(height * 2).fit("max").url()}
-      alt={logoImage.alt || logoText}
-      width={Math.round(height * aspectRatio)}
-      height={height}
-      style={{ height, width: "auto" }}
-      className="object-contain"
-    />
-  ) : (
-    <span
-      className={`font-serif italic tracking-tight text-foreground ${LOGO_TEXT_CLASSES[size]}`}
-    >
-      {logoText}
+  const logo = (
+    <span className="flex items-center gap-3">
+      {logoImage?.asset?._ref && (
+        <Image
+          src={urlForImage(logoImage).height(height * 2).fit("max").url()}
+          alt={logoImage.alt || logoText}
+          width={Math.round(height * aspectRatio)}
+          height={height}
+          style={{ height, width: "auto" }}
+          className="object-contain"
+        />
+      )}
+      <span
+        className={`font-serif italic tracking-tight text-foreground ${LOGO_TEXT_CLASSES[size]}`}
+      >
+        {logoText}
+      </span>
     </span>
   );
 
