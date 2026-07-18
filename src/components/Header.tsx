@@ -4,6 +4,7 @@ import Link from "next/link";
 import { urlForImage } from "@/sanity/image";
 import type { LogoImage, LogoPosition, LogoSize } from "@/sanity/types";
 
+import { MobileNav } from "./MobileNav";
 import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_LINKS = [
@@ -82,14 +83,12 @@ export function Header({
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25),0_8px_30px_-12px_rgba(0,0,0,0.25)] backdrop-blur-xl backdrop-saturate-150">
       <div
-        className={`mx-auto flex max-w-5xl px-6 py-6 ${
-          position === "center"
-            ? "flex-col items-center gap-4"
-            : "items-center justify-between"
+        className={`mx-auto flex max-w-5xl items-center justify-between px-6 py-6 ${
+          position === "center" ? "sm:flex-col sm:gap-4" : ""
         }`}
       >
         <Link href="/">{logo}</Link>
-        <div className="flex items-center gap-6 sm:gap-8">
+        <div className="hidden items-center gap-6 sm:flex sm:gap-8">
           <nav aria-label="Navigation principale">
             <ul className="flex items-center gap-6 sm:gap-8">
               {navLinks.map((link) => (
@@ -117,6 +116,7 @@ export function Header({
             <ThemeToggle />
           </div>
         </div>
+        <MobileNav navLinks={navLinks} contactEmail={contactEmail} />
       </div>
     </header>
   );
