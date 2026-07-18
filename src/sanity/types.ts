@@ -2,8 +2,20 @@ import type { Image as SanityImage } from "sanity";
 
 export type ImageWithAlt = SanityImage & { alt?: string };
 
+export type LogoImage = ImageWithAlt & {
+  asset?: {
+    metadata?: { dimensions?: { width: number; height: number } };
+  };
+};
+
+export type LogoSize = "small" | "medium" | "large";
+export type LogoPosition = "left" | "center";
+
 export type SiteSettings = {
   logoText: string;
+  logoImage: LogoImage | null;
+  logoSize: LogoSize | null;
+  logoPosition: LogoPosition | null;
   heroImage: ImageWithAlt;
   kicker: string | null;
   heading: string;

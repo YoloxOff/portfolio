@@ -3,6 +3,12 @@ import { defineQuery } from "next-sanity";
 export const siteSettingsQuery = defineQuery(`
   *[_type == "siteSettings"][0]{
     logoText,
+    logoImage{
+      ...,
+      asset->{ metadata{ dimensions{ width, height } } }
+    },
+    logoSize,
+    logoPosition,
     heroImage,
     kicker,
     heading,

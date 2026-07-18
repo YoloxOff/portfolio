@@ -62,7 +62,12 @@ export default async function Home() {
   return (
     <>
       <HeroBanner image={settings.heroImage} />
-      <Header logoText={settings.logoText} />
+      <Header
+        logoText={settings.logoText}
+        logoImage={settings.logoImage}
+        logoSize={settings.logoSize}
+        logoPosition={settings.logoPosition}
+      />
       <main className="flex-1">
         <Intro
           kicker={settings.kicker}

@@ -8,9 +8,52 @@ export default defineType({
     defineField({
       name: "logoText",
       title: "Logo (texte)",
+      description:
+        "Utilisé si aucune image de logo n'est renseignée, et comme texte alternatif sinon.",
       type: "string",
       initialValue: "Ali",
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "logoImage",
+      title: "Logo (image)",
+      description: "Optionnel — laissez vide pour afficher le logo texte.",
+      type: "image",
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Texte alternatif",
+          type: "string",
+        }),
+      ],
+    }),
+    defineField({
+      name: "logoSize",
+      title: "Taille du logo",
+      type: "string",
+      options: {
+        list: [
+          { title: "Petit", value: "small" },
+          { title: "Moyen", value: "medium" },
+          { title: "Grand", value: "large" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "medium",
+    }),
+    defineField({
+      name: "logoPosition",
+      title: "Position du logo",
+      type: "string",
+      options: {
+        list: [
+          { title: "Gauche (avec le menu à droite)", value: "left" },
+          { title: "Centré (menu en dessous)", value: "center" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "left",
     }),
     defineField({
       name: "heroImage",
