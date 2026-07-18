@@ -8,8 +8,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_LINKS = [
   { href: "#sites", label: "Sites" },
-  { href: "#photos", label: "Photos" },
-  { href: "#contact", label: "Contact" },
+  { href: "#photos", label: "Photographie" },
 ];
 
 const LOGO_HEIGHT: Record<LogoSize, number> = {
@@ -31,6 +30,7 @@ export function Header({
   logoSize = "medium",
   logoPosition = "left",
   showPhotosLink = true,
+  contactEmail,
 }: {
   logoText: string;
   showLogoText?: boolean | null;
@@ -38,6 +38,7 @@ export function Header({
   logoSize?: LogoSize | null;
   logoPosition?: LogoPosition | null;
   showPhotosLink?: boolean;
+  contactEmail?: string | null;
 }) {
   const size = logoSize ?? "medium";
   const position = logoPosition ?? "left";
@@ -50,7 +51,7 @@ export function Header({
 
   const logo = (
     <span className="flex items-center gap-3">
-      {logoImage?.asset?._ref && (
+      {logoImage?.asset?._ref ? (
         <Image
           src={urlForImage(logoImage).height(height * 2).fit("max").url()}
           alt={logoImage.alt || logoText}
@@ -59,6 +60,14 @@ export function Header({
           style={{ height, width: "auto" }}
           className="object-contain dark:invert dark:hue-rotate-180"
         />
+      ) : (
+        <span
+          aria-hidden="true"
+          className="flex shrink-0 items-center justify-center rounded-lg bg-ink font-serif italic text-ink-foreground"
+          style={{ height, width: height, fontSize: height * 0.5 }}
+        >
+          {logoText.charAt(0).toUpperCase()}
+        </span>
       )}
       {showLogoText !== false && (
         <span
@@ -96,7 +105,17 @@ export function Header({
               ))}
             </ul>
           </nav>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            {contactEmail ? (
+              <a
+                href="#contact"
+                className="rounded-full bg-ink px-5 py-2 text-[11px] font-medium uppercase tracking-widest text-ink-foreground transition-colors hover:bg-accent"
+              >
+                Me contacter
+              </a>
+            ) : null}
+          </div>
         </div>
       </div>
     </header>

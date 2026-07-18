@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
+import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { HeroBanner } from "@/components/HeroBanner";
 import { Intro } from "@/components/Intro";
 import { PhotoGridSection } from "@/components/PhotoGridSection";
 import { WebProjectsSection } from "@/components/WebProjectsSection";
@@ -69,9 +69,6 @@ export default async function Home() {
 
   return (
     <>
-      {settings.heroImage?.asset?._ref && (
-        <HeroBanner image={settings.heroImage} />
-      )}
       <Header
         logoText={settings.logoText}
         showLogoText={settings.showLogoText}
@@ -79,12 +76,17 @@ export default async function Home() {
         logoSize={settings.logoSize}
         logoPosition={settings.logoPosition}
         showPhotosLink={showPhotos}
+        contactEmail={settings.contactEmail}
       />
       <main className="flex-1">
         <Intro
           kicker={settings.kicker}
           heading={settings.heading}
           introText={settings.introText}
+          heroImage={settings.heroImage}
+          logoText={settings.logoText}
+          contactEmail={settings.contactEmail}
+          contactPhone={settings.contactPhone}
         />
         <WorkingStyleSection
           label={settings.workingStyleLabel}
@@ -104,11 +106,14 @@ export default async function Home() {
             photos={sportsPhotos}
           />
         )}
+        <ContactSection
+          footerCta={settings.footerCta}
+          contactEmail={settings.contactEmail}
+          contactPhone={settings.contactPhone}
+        />
       </main>
       <Footer
-        footerCta={settings.footerCta}
-        contactEmail={settings.contactEmail}
-        contactPhone={settings.contactPhone}
+        logoText={settings.logoText}
         instagramUrl={settings.instagramUrl}
         linkedinUrl={settings.linkedinUrl}
       />

@@ -4,12 +4,15 @@
 
 :root {
   color-scheme: light;
-  --background: #ffffff;
-  --foreground: #171717;
-  --muted: #6b6b6b;
-  --border: #e5e3e0;
+  --background: #f5f0e8;
+  --foreground: #211c17;
+  --muted: #776e62;
+  --border: #e2d8c8;
   --accent: #b5502c;
-  --surface: #f4f3f1;
+  --surface: #ede4d5;
+  --ink: #1c1712;
+  --ink-foreground: #f5f0e8;
+  --ink-muted: #a89e90;
 }
 
 :root.dark {
@@ -20,6 +23,9 @@
   --border: #2c2c2c;
   --accent: #e0865c;
   --surface: #1c1c1c;
+  --ink: #0c0a08;
+  --ink-foreground: #f5f0e8;
+  --ink-muted: #a89e90;
 }
 
 @theme inline {
@@ -29,6 +35,9 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-muted: var(--ink-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-newsreader);

@@ -20,7 +20,7 @@ export function PhotoGridSection({
   const smallPhotos = rest.slice(0, 4);
 
   return (
-    <section id="photos" className="mx-auto max-w-5xl px-6 py-12">
+    <section id="photos" className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
       <div className="flex items-baseline justify-between border-b border-border pb-4">
         <h2 className="font-serif text-2xl italic text-foreground">
           {label ?? "Photographie sportive"}
@@ -38,7 +38,7 @@ export function PhotoGridSection({
       </div>
 
       <div className="mt-10 flex flex-col gap-4 md:h-[32rem] md:flex-row">
-        <div className="group relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-surface md:aspect-auto md:h-full md:flex-1">
+        <div className="group relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-xl bg-surface md:aspect-auto md:h-full md:flex-1">
           <Image
             src={urlForImage(featured.image)
               .width(900)
@@ -58,7 +58,7 @@ export function PhotoGridSection({
             {smallPhotos.map((photo) => (
               <div
                 key={photo._id}
-                className="group relative aspect-square overflow-hidden bg-surface md:aspect-auto md:h-full"
+                className="group relative aspect-square overflow-hidden rounded-xl bg-surface md:aspect-auto md:h-full"
               >
                 <Image
                   src={urlForImage(photo.image)
