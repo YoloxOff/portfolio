@@ -15,6 +15,7 @@ export const siteSettingsQuery = defineQuery(`
     introText,
     sitesLabel,
     sitesNote,
+    showPhotosSection,
     photosLabel,
     instagramHandle,
     instagramUrl,

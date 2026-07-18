@@ -27,15 +27,20 @@ export function Header({
   logoImage,
   logoSize = "medium",
   logoPosition = "left",
+  showPhotosLink = true,
 }: {
   logoText: string;
   logoImage?: LogoImage | null;
   logoSize?: LogoSize | null;
   logoPosition?: LogoPosition | null;
+  showPhotosLink?: boolean;
 }) {
   const size = logoSize ?? "medium";
   const position = logoPosition ?? "left";
   const height = LOGO_HEIGHT[size];
+  const navLinks = showPhotosLink
+    ? NAV_LINKS
+    : NAV_LINKS.filter((link) => link.href !== "#photos");
   const dimensions = logoImage?.asset?.metadata?.dimensions;
   const aspectRatio = dimensions ? dimensions.width / dimensions.height : 3;
 
@@ -68,7 +73,7 @@ export function Header({
         <Link href="/">{logo}</Link>
         <nav aria-label="Navigation principale">
           <ul className="flex items-center gap-6 sm:gap-8">
-            {NAV_LINKS.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}

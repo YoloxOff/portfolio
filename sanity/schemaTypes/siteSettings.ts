@@ -58,6 +58,7 @@ export default defineType({
     defineField({
       name: "heroImage",
       title: "Image bannière",
+      description: "Optionnel — laissez vide pour ne pas afficher de bannière.",
       type: "image",
       options: { hotspot: true },
       fields: [
@@ -65,10 +66,8 @@ export default defineType({
           name: "alt",
           title: "Texte alternatif",
           type: "string",
-          validation: (rule) => rule.required(),
         }),
       ],
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "kicker",
@@ -101,6 +100,14 @@ export default defineType({
       title: "Note section « Sites web »",
       type: "string",
       initialValue: "Projets récents — d'autres à venir",
+    }),
+    defineField({
+      name: "showPhotosSection",
+      title: "Afficher la section Photographie sportive",
+      description:
+        "Désactivez pour masquer la section et le lien de menu correspondant (utile en attendant d'avoir des photos à publier).",
+      type: "boolean",
+      initialValue: true,
     }),
     defineField({
       name: "photosLabel",

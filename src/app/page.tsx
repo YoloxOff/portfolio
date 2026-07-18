@@ -43,6 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   const { settings, webProjects, sportsPhotos } = await getData();
+  const showPhotos = settings?.showPhotosSection !== false;
 
   if (!settings) {
     return (
@@ -61,12 +62,13 @@ export default async function Home() {
 
   return (
     <>
-      <HeroBanner image={settings.heroImage} />
+      {settings.heroImage?.asset && <HeroBanner image={settings.heroImage} />}
       <Header
         logoText={settings.logoText}
         logoImage={settings.logoImage}
         logoSize={settings.logoSize}
         logoPosition={settings.logoPosition}
+        showPhotosLink={showPhotos}
       />
       <main className="flex-1">
         <Intro
@@ -79,12 +81,14 @@ export default async function Home() {
           note={settings.sitesNote}
           projects={webProjects}
         />
-        <PhotoGridSection
-          label={settings.photosLabel}
-          instagramHandle={settings.instagramHandle}
-          instagramUrl={settings.instagramUrl}
-          photos={sportsPhotos}
-        />
+        {showPhotos && (
+          <PhotoGridSection
+            label={settings.photosLabel}
+            instagramHandle={settings.instagramHandle}
+            instagramUrl={settings.instagramUrl}
+            photos={sportsPhotos}
+          />
+        )}
       </main>
       <Footer
         footerCta={settings.footerCta}

@@ -16,12 +16,13 @@ export type SiteSettings = {
   logoImage: LogoImage | null;
   logoSize: LogoSize | null;
   logoPosition: LogoPosition | null;
-  heroImage: ImageWithAlt;
+  heroImage: ImageWithAlt | null;
   kicker: string | null;
   heading: string;
   introText: string | null;
   sitesLabel: string | null;
   sitesNote: string | null;
+  showPhotosSection: boolean | null;
   photosLabel: string | null;
   instagramHandle: string | null;
   instagramUrl: string | null;
