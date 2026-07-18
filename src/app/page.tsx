@@ -62,7 +62,9 @@ export default async function Home() {
 
   return (
     <>
-      {settings.heroImage?.asset && <HeroBanner image={settings.heroImage} />}
+      {settings.heroImage?.asset?._ref && (
+        <HeroBanner image={settings.heroImage} />
+      )}
       <Header
         logoText={settings.logoText}
         logoImage={settings.logoImage}

@@ -44,7 +44,7 @@ export function Header({
   const dimensions = logoImage?.asset?.metadata?.dimensions;
   const aspectRatio = dimensions ? dimensions.width / dimensions.height : 3;
 
-  const logo = logoImage?.asset ? (
+  const logo = logoImage?.asset?._ref ? (
     <Image
       src={urlForImage(logoImage).height(height * 2).fit("max").url()}
       alt={logoImage.alt || logoText}
