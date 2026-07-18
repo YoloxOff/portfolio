@@ -193,6 +193,12 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "contactPhone",
+      title: "Téléphone de contact",
+      description: "Optionnel — laissez vide pour ne pas l'afficher.",
+      type: "string",
+    }),
+    defineField({
       name: "seoTitle",
       title: "Titre SEO",
       type: "string",

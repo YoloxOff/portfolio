@@ -36,6 +36,7 @@ export type SiteSettings = {
   linkedinUrl: string | null;
   footerCta: string | null;
   contactEmail: string;
+  contactPhone: string | null;
   seoTitle: string | null;
   seoDescription: string | null;
 };

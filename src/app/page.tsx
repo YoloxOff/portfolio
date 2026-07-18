@@ -108,6 +108,7 @@ export default async function Home() {
       <Footer
         footerCta={settings.footerCta}
         contactEmail={settings.contactEmail}
+        contactPhone={settings.contactPhone}
         instagramUrl={settings.instagramUrl}
         linkedinUrl={settings.linkedinUrl}
       />

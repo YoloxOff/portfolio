@@ -1,11 +1,13 @@
 export function Footer({
   footerCta,
   contactEmail,
+  contactPhone,
   instagramUrl,
   linkedinUrl,
 }: {
   footerCta: string | null;
   contactEmail: string;
+  contactPhone: string | null;
   instagramUrl: string | null;
   linkedinUrl: string | null;
 }) {
@@ -18,12 +20,22 @@ export function Footer({
               {footerCta}
             </p>
           ) : null}
-          <a
-            href={`mailto:${contactEmail}`}
-            className="text-sm text-muted underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
-          >
-            {contactEmail}
-          </a>
+          <div className="mt-1 flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4">
+            <a
+              href={`mailto:${contactEmail}`}
+              className="text-sm text-muted underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+            >
+              {contactEmail}
+            </a>
+            {contactPhone ? (
+              <a
+                href={`tel:${contactPhone.replace(/\s+/g, "")}`}
+                className="text-sm text-muted underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+              >
+                {contactPhone}
+              </a>
+            ) : null}
+          </div>
         </div>
 
         {instagramUrl || linkedinUrl ? (
