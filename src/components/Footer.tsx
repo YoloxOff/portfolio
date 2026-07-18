@@ -51,8 +51,8 @@ export function Footer({
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    width="20"
-                    height="20"
+                    width="24"
+                    height="24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.5"
