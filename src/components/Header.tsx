@@ -4,6 +4,8 @@ import Link from "next/link";
 import { urlForImage } from "@/sanity/image";
 import type { LogoImage, LogoPosition, LogoSize } from "@/sanity/types";
 
+import { ThemeToggle } from "./ThemeToggle";
+
 const NAV_LINKS = [
   { href: "#sites", label: "Sites" },
   { href: "#photos", label: "Photos" },
@@ -78,21 +80,24 @@ export function Header({
         }`}
       >
         <Link href="/">{logo}</Link>
-        <nav aria-label="Navigation principale">
-          <ul className="flex items-center gap-6 sm:gap-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="group relative text-[11px] font-medium uppercase tracking-widest text-foreground"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="flex items-center gap-6 sm:gap-8">
+          <nav aria-label="Navigation principale">
+            <ul className="flex items-center gap-6 sm:gap-8">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="group relative text-[11px] font-medium uppercase tracking-widest text-foreground"
+                  >
+                    {link.label}
+                    <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );
