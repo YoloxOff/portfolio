@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import Script from "next/script";
@@ -52,6 +53,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
