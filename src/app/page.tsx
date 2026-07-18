@@ -68,6 +68,7 @@ export default async function Home() {
       )}
       <Header
         logoText={settings.logoText}
+        showLogoText={settings.showLogoText}
         logoImage={settings.logoImage}
         logoSize={settings.logoSize}
         logoPosition={settings.logoPosition}

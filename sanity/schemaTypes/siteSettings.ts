@@ -9,10 +9,18 @@ export default defineType({
       name: "logoText",
       title: "Logo (texte)",
       description:
-        "Toujours affiché, à droite de l'image de logo si vous en ajoutez une.",
+        "Utilisé comme texte alternatif de l'image de logo, même si l'affichage du texte est désactivé ci-dessous.",
       type: "string",
       initialValue: "Ali",
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "showLogoText",
+      title: "Afficher le logo texte",
+      description:
+        "Désactivez pour n'afficher que l'image de logo, sans le texte à côté.",
+      type: "boolean",
+      initialValue: true,
     }),
     defineField({
       name: "logoImage",

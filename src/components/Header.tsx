@@ -24,12 +24,14 @@ const LOGO_TEXT_CLASSES: Record<LogoSize, string> = {
 
 export function Header({
   logoText,
+  showLogoText = true,
   logoImage,
   logoSize = "medium",
   logoPosition = "left",
   showPhotosLink = true,
 }: {
   logoText: string;
+  showLogoText?: boolean | null;
   logoImage?: LogoImage | null;
   logoSize?: LogoSize | null;
   logoPosition?: LogoPosition | null;
@@ -56,11 +58,13 @@ export function Header({
           className="object-contain"
         />
       )}
-      <span
-        className={`font-serif italic tracking-tight text-foreground ${LOGO_TEXT_CLASSES[size]}`}
-      >
-        {logoText}
-      </span>
+      {showLogoText !== false && (
+        <span
+          className={`font-serif italic tracking-tight text-foreground ${LOGO_TEXT_CLASSES[size]}`}
+        >
+          {logoText}
+        </span>
+      )}
     </span>
   );
 

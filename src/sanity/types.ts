@@ -16,6 +16,7 @@ export type WorkingStep = {
 
 export type SiteSettings = {
   logoText: string;
+  showLogoText: boolean | null;
   logoImage: LogoImage | null;
   logoSize: LogoSize | null;
   logoPosition: LogoPosition | null;
