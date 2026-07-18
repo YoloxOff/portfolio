@@ -33,7 +33,7 @@ export function WebProjectsSection({
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block overflow-hidden bg-[#f4f3f1]"
+                className="group block overflow-hidden bg-surface"
               >
                 <div className="relative aspect-[4/3] w-full">
                   <Image

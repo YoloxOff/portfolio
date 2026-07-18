@@ -55,7 +55,7 @@ export function Header({
           width={Math.round(height * aspectRatio)}
           height={height}
           style={{ height, width: "auto" }}
-          className="object-contain"
+          className="object-contain dark:invert dark:hue-rotate-180"
         />
       )}
       {showLogoText !== false && (

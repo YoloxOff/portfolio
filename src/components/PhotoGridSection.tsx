@@ -38,7 +38,7 @@ export function PhotoGridSection({
       </div>
 
       <div className="mt-10 flex flex-col gap-4 md:h-[32rem] md:flex-row">
-        <div className="group relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-[#f4f3f1] md:aspect-auto md:h-full md:flex-1">
+        <div className="group relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-surface md:aspect-auto md:h-full md:flex-1">
           <Image
             src={urlForImage(featured.image)
               .width(900)
@@ -58,7 +58,7 @@ export function PhotoGridSection({
             {smallPhotos.map((photo) => (
               <div
                 key={photo._id}
-                className="group relative aspect-square overflow-hidden bg-[#f4f3f1] md:aspect-auto md:h-full"
+                className="group relative aspect-square overflow-hidden bg-surface md:aspect-auto md:h-full"
               >
                 <Image
                   src={urlForImage(photo.image)
