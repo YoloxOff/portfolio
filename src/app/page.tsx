@@ -6,6 +6,7 @@ import { HeroBanner } from "@/components/HeroBanner";
 import { Intro } from "@/components/Intro";
 import { PhotoGridSection } from "@/components/PhotoGridSection";
 import { WebProjectsSection } from "@/components/WebProjectsSection";
+import { WorkingStyleSection } from "@/components/WorkingStyleSection";
 import { client } from "@/sanity/client";
 import {
   siteSettingsQuery,
@@ -77,6 +78,11 @@ export default async function Home() {
           kicker={settings.kicker}
           heading={settings.heading}
           introText={settings.introText}
+        />
+        <WorkingStyleSection
+          label={settings.workingStyleLabel}
+          intro={settings.workingStyleIntro}
+          steps={settings.workingSteps}
         />
         <WebProjectsSection
           label={settings.sitesLabel}

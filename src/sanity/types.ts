@@ -3,13 +3,16 @@ import type { Image as SanityImage } from "sanity";
 export type ImageWithAlt = SanityImage & { alt?: string };
 
 export type LogoImage = ImageWithAlt & {
-  asset?: {
-    metadata?: { dimensions?: { width: number; height: number } };
-  };
+  dimensions?: { width: number; height: number };
 };
 
 export type LogoSize = "small" | "medium" | "large";
 export type LogoPosition = "left" | "center";
+
+export type WorkingStep = {
+  title: string;
+  description: string | null;
+};
 
 export type SiteSettings = {
   logoText: string;
@@ -20,6 +23,9 @@ export type SiteSettings = {
   kicker: string | null;
   heading: string;
   introText: string | null;
+  workingStyleLabel: string | null;
+  workingStyleIntro: string | null;
+  workingSteps: WorkingStep[] | null;
   sitesLabel: string | null;
   sitesNote: string | null;
   showPhotosSection: boolean | null;

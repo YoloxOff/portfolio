@@ -41,7 +41,7 @@ export function Header({
   const navLinks = showPhotosLink
     ? NAV_LINKS
     : NAV_LINKS.filter((link) => link.href !== "#photos");
-  const dimensions = logoImage?.asset?.metadata?.dimensions;
+  const dimensions = logoImage?.dimensions;
   const aspectRatio = dimensions ? dimensions.width / dimensions.height : 3;
 
   const logo = logoImage?.asset?._ref ? (

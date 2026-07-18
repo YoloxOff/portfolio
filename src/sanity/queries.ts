@@ -5,7 +5,7 @@ export const siteSettingsQuery = defineQuery(`
     logoText,
     logoImage{
       ...,
-      asset->{ metadata{ dimensions{ width, height } } }
+      "dimensions": asset->metadata.dimensions
     },
     logoSize,
     logoPosition,
@@ -13,6 +13,12 @@ export const siteSettingsQuery = defineQuery(`
     kicker,
     heading,
     introText,
+    workingStyleLabel,
+    workingStyleIntro,
+    workingSteps[]{
+      title,
+      description
+    },
     sitesLabel,
     sitesNote,
     showPhotosSection,

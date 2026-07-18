@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
   name: "siteSettings",
@@ -88,6 +88,46 @@ export default defineType({
       title: "Paragraphe d'introduction",
       type: "text",
       rows: 3,
+    }),
+    defineField({
+      name: "workingStyleLabel",
+      title: "Titre section « Ma façon de travailler »",
+      type: "string",
+      initialValue: "Ma façon de travailler",
+    }),
+    defineField({
+      name: "workingStyleIntro",
+      title: "Texte d'introduction (optionnel)",
+      type: "text",
+      rows: 2,
+    }),
+    defineField({
+      name: "workingSteps",
+      title: "Étapes",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "object",
+          name: "step",
+          fields: [
+            defineField({
+              name: "title",
+              title: "Titre de l'étape",
+              type: "string",
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "description",
+              title: "Description",
+              type: "text",
+              rows: 2,
+            }),
+          ],
+          preview: {
+            select: { title: "title", subtitle: "description" },
+          },
+        }),
+      ],
     }),
     defineField({
       name: "sitesLabel",
